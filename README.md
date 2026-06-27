@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Odoo Snippets 🐍
 
 > A powerful VS Code extension providing snippets for Odoo developers — Python models, XML views, fields, wizards, and much more!
@@ -6,7 +5,7 @@
 ![Version](https://img.shields.io/badge/version-0.0.1-blue)
 ![VS Code](https://img.shields.io/badge/VS%20Code-1.60%2B-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Odoo](https://img.shields.io/badge/Odoo-14%20|%2015%20|%2016%20|%2017-purple)
+![Odoo](https://img.shields.io/badge/Odoo-19%20-purple)
 
 ---
 
@@ -157,7 +156,7 @@ Type `oinherit` and press **Tab**:
 ## Requirements
 
 - VS Code `1.60.0` or higher
-- Compatible with Odoo `19.0`
+- Compatible with Odoo `14.0`, `15.0`, `16.0`, `17.0`, and `19.0`
 
 ---
 
@@ -235,70 +234,3 @@ Free to use, modify, and distribute.
 ---
 
 **Made with ❤️ by [Aman Kumar Singh](https://github.com/amankum02) for the Odoo Developer Community**
-=======
-# odoo-snippets README
-
-This is the README for your extension "odoo-snippets". After writing up a brief description, we recommend including the following sections.
-
-## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
->>>>>>> 557b2bf95e0cc0bac0ea32ecf5a8e1f37891c2af
