@@ -1,6 +1,7 @@
 {
   "name": "odoo-snippets",
   "displayName": "Odoo Snippets",
+<<<<<<< HEAD
   "description": "Snippets for Odoo Developers",
   "version": "0.0.1",
   "author": {
@@ -9,12 +10,17 @@
     "url": "https://github.com/amankum02"
   },
   "publisher": "Aman Kumar Singh",
+=======
+  "description": "Snippets for Odoo Developer",
+  "version": "0.0.1",
+>>>>>>> 557b2bf95e0cc0bac0ea32ecf5a8e1f37891c2af
   "engines": {
     "vscode": "^1.125.0"
   },
   "categories": [
     "Snippets"
   ],
+<<<<<<< HEAD
   "keywords": [
     "odoo",
     "python",
@@ -26,6 +32,8 @@
     "type": "git",
     "url": "https://github.com/amankum02/odoo-snippets.git"
   },
+=======
+>>>>>>> 557b2bf95e0cc0bac0ea32ecf5a8e1f37891c2af
   "contributes": {
     "snippets": [
       {
@@ -33,6 +41,7 @@
         "path": "./snippets/snippets.code-snippets"
       },
       {
+<<<<<<< HEAD
         "language": "xml",
         "path": "./snippets/xml.json"
       }
@@ -40,3 +49,11 @@
   },
   "icon": "images/icon.png"
 }
+=======
+      "language": "xml",
+      "path": "./snippets/xml.json"
+      }
+    ]
+  }
+}
+>>>>>>> 557b2bf95e0cc0bac0ea32ecf5a8e1f37891c2af
