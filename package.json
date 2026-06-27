@@ -1,0 +1,24 @@
+{
+  "name": "odoo-snippets",
+  "displayName": "Odoo Snippets",
+  "description": "Snippets for Odoo Developer",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.125.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "python",
+        "path": "./snippets/snippets.code-snippets"
+      },
+      {
+      "language": "xml",
+      "path": "./snippets/xml.json"
+      }
+    ]
+  }
+}
