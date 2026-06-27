@@ -1,0 +1,122 @@
+{
+  "Odoo Model": {
+    "prefix": "omodel",
+    "body": [
+      "from odoo import models, fields, api",
+      "",
+      "class ${1:ModelName}(models.Model):",
+      "    _name = '${2:module.model}'",
+      "    _description = '${3:Description}'",
+      "",
+      "    name = fields.Char(string='Name', required=True)",
+      "    ${0}"
+    ],
+    "description": "Odoo basic model"
+  },
+
+  "Odoo Compute Field": {
+    "prefix": "ocompute",
+    "body": [
+      "${1:field_name} = fields.${2:Char}(",
+      "    string='${3:Label}',",
+      "    compute='_compute_${1:field_name}'",
+      ")",
+      "",
+      "@api.depends('${4:dependency}')",
+      "def _compute_${1:field_name}(self):",
+      "    for rec in self:",
+      "        rec.${1:field_name} = ${0}"
+    ],
+    "description": "Computed field with depends"
+  },
+
+  "Odoo Onchange": {
+    "prefix": "oonchange",
+    "body": [
+      "@api.onchange('${1:field_name}')",
+      "def _onchange_${1:field_name}(self):",
+      "    ${0}"
+    ],
+    "description": "Onchange decorator"
+  },
+
+  "Odoo Many2one": {
+    "prefix": "om2o",
+    "body": [
+      "${1:field_name}_id = fields.Many2one(",
+      "    '${2:model.name}',",
+      "    string='${3:Label}'",
+      ")"
+    ],
+    "description": "Many2one field"
+  },
+
+  "Odoo One2many": {
+    "prefix": "oo2m",
+    "body": [
+      "${1:field_name}_ids = fields.One2many(",
+      "    '${2:model.name}',",
+      "    '${3:inverse_field_id}',",
+      "    string='${4:Label}'",
+      ")"
+    ],
+    "description": "One2many field"
+  },
+
+  "Odoo Many2many": {
+    "prefix": "om2m",
+    "body": [
+      "${1:field_name}_ids = fields.Many2many(",
+      "    '${2:model.name}',",
+      "    string='${3:Label}'",
+      ")"
+    ],
+    "description": "Many2many field"
+  },
+
+  "Odoo Button Action": {
+    "prefix": "obtn",
+    "body": [
+      "def action_${1:button_name}(self):",
+      "    for rec in self:",
+      "        ${0}"
+    ],
+    "description": "Button method"
+  },
+
+  "Odoo raise UserError": {
+    "prefix": "oerror",
+    "body": [
+      "from odoo.exceptions import UserError",
+      "raise UserError(_('${1:Error message}'))"
+    ],
+    "description": "UserError raise"
+  },
+
+  "Odoo Search": {
+    "prefix": "osearch",
+    "body": [
+      "records = self.env['${1:model.name}'].search([",
+      "    ('${2:field}', '${3:=}', ${4:value}),",
+      "])"
+    ],
+    "description": "Odoo search query"
+  },
+
+  "Odoo Wizard": {
+    "prefix": "owizard",
+    "body": [
+      "from odoo import models, fields, api",
+      "",
+      "class ${1:WizardName}(models.TransientModel):",
+      "    _name = '${2:module.wizard}'",
+      "    _description = '${3:Wizard Description}'",
+      "",
+      "    ${4:field} = fields.${5:Char}(string='${6:Label}')",
+      "",
+      "    def action_confirm(self):",
+      "        ${0}"
+    ],
+    "description": "Odoo TransientModel wizard"
+  }
+}

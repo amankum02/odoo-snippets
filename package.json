@@ -1,0 +1,42 @@
+{
+  "name": "odoo-snippets",
+  "displayName": "Odoo Snippets",
+  "description": "Snippets for Odoo Developers",
+  "version": "0.0.1",
+  "author": {
+    "name": "Aman Kumar Singh",
+    "email": "as2732044@email.com",
+    "url": "https://github.com/amankum02"
+  },
+  "publisher": "Aman Kumar Singh",
+  "engines": {
+    "vscode": "^1.125.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "keywords": [
+    "odoo",
+    "python",
+    "xml",
+    "snippets",
+    "erp"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amankum02/odoo-snippets.git"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "python",
+        "path": "./snippets/snippets.code-snippets"
+      },
+      {
+        "language": "xml",
+        "path": "./snippets/xml.json"
+      }
+    ]
+  },
+  "icon": "images/icon.png"
+}

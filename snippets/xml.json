@@ -1,0 +1,217 @@
+
+  {
+  "Odoo Form View": {
+    "prefix": "oform",
+    "body": [
+      "<record id='${1:model}_form_view' model='ir.ui.view'>",
+      "    <field name='name'>${1:model}.form</field>",
+      "    <field name='model'>${2:module.model}</field>",
+      "    <field name='arch' type='xml'>",
+      "        <form string='${3:Title}'>",
+      "            <sheet>",
+      "                <group>",
+      "                    <field name='name'/>",
+      "                    ${0}",
+      "                </group>",
+      "            </sheet>",
+      "        </form>",
+      "    </field>",
+      "</record>"
+    ],
+    "description": "Odoo form view record"
+  },
+
+  "Odoo List View": {
+    "prefix": "otree",
+    "body": [
+      "<record id='${1:model}_tree_view' model='ir.ui.view'>",
+      "    <field name='name'>${1:model}.tree</field>",
+      "    <field name='model'>${2:module.model}</field>",
+      "    <field name='arch' type='xml'>",
+      "        <list string='${3:Title}'>",
+      "            <field name='name'/>",
+      "            ${0}",
+      "        </list>",
+      "    </field>",
+      "</record>"
+    ],
+    "description": "Odoo tree/list view record"
+  },
+
+  "Odoo Kanban View": {
+    "prefix": "okanban",
+    "body": [
+      "<record id='${1:model}_kanban_view' model='ir.ui.view'>",
+      "    <field name='name'>${1:model}.kanban</field>",
+      "    <field name='model'>${2:module.model}</field>",
+      "    <field name='arch' type='xml'>",
+      "        <kanban>",
+      "            <field name='name'/>",
+      "            <templates>",
+      "                <t t-name='kanban-box'>",
+      "                    <div class='oe_kanban_card'>",
+      "                        <strong><field name='name'/></strong>",
+      "                        ${0}",
+      "                    </div>",
+      "                </t>",
+      "            </templates>",
+      "        </kanban>",
+      "    </field>",
+      "</record>"
+    ],
+    "description": "Odoo kanban view record"
+  },
+
+  "Odoo Search View": {
+    "prefix": "osearch",
+    "body": [
+      "<record id='${1:model}_search_view' model='ir.ui.view'>",
+      "    <field name='name'>${1:model}.search</field>",
+      "    <field name='model'>${2:module.model}</field>",
+      "    <field name='arch' type='xml'>",
+      "        <search>",
+      "            <field name='name'/>",
+      "            <filter string='${3:Filter Name}'",
+      "                    name='${4:filter_name}'",
+      "                    domain=\"[('${5:field}', '=', ${6:value})]\"/>",
+      "            <group expand='0' string='Group By'>",
+      "                <filter string='${7:Group Label}'",
+      "                        name='groupby_${8:field}'",
+      "                        context=\"{'group_by': '${8:field}'}\"/>",
+      "            </group>",
+      "        </search>",
+      "    </field>",
+      "</record>"
+    ],
+    "description": "Odoo search view with filter and group by"
+  },
+
+  "Odoo Action Window": {
+    "prefix": "oaction",
+    "body": [
+      "<record id='action_${1:model}' model='ir.actions.act_window'>",
+      "    <field name='name'>${2:Action Name}</field>",
+      "    <field name='res_model'>${3:module.model}</field>",
+      "    <field name='view_mode'>tree,form</field>",
+      "</record>"
+    ],
+    "description": "Window action"
+  },
+  "Odoo Menu Item": {
+    "prefix": "omenu",
+    "body": [
+      "<menuitem id='menu_${1:name}'",
+      "          name='${2:Menu Label}'",
+      "          action='action_${3:model}'",
+      "          parent='${4:parent_menu_id}'",
+      "          sequence='${5:10}'/>"
+    ],
+    "description": "Odoo menuitem"
+  },
+
+  "Odoo Button Header": {
+    "prefix": "obtnheader",
+    "body": [
+      "<header>",
+      "    <button name='action_${1:confirm}'",
+      "            string='${2:Confirm}'",
+      "            type='object'",
+      "            class='btn-primary'",
+      "            states='${3:draft}'/>",
+      "    <field name='state' widget='statusbar'",
+      "           statusbar_visible='${4:draft,done}'/>",
+      "</header>"
+    ],
+    "description": "Header with button and statusbar"
+  },
+
+  "Odoo Smart Button": {
+    "prefix": "osmartbtn",
+    "body": [
+      "<div class='oe_button_box' name='button_box'>",
+      "    <button class='oe_stat_button'",
+      "            type='object'",
+      "            name='action_${1:view_related}'",
+      "            icon='fa-${2:list}'>",
+      "        <field name='${3:count_field}'",
+      "               widget='statinfo'",
+      "               string='${4:Label}'/>",
+      "    </button>",
+      "</div>"
+    ],
+    "description": "Smart button (oe_stat_button)"
+  },
+
+  "Odoo Notebook": {
+    "prefix": "onote",
+    "body": [
+      "<notebook>",
+      "    <page string='${1:Tab Name}' name='${2:tab_name}'>",
+      "        <group>",
+      "            ${0}",
+      "        </group>",
+      "    </page>",
+      "</notebook>"
+    ],
+    "description": "Notebook with page tab"
+  },
+
+  "Odoo Group Two Cols": {
+    "prefix": "ogroup2",
+    "body": [
+      "<group>",
+      "    <group string='${1:Left Column}'>",
+      "        <field name='${2:field1}'/>",
+      "        ${0}",
+      "    </group>",
+      "    <group string='${3:Right Column}'>",
+      "        <field name='${4:field2}'/>",
+      "    </group>",
+      "</group>"
+    ],
+    "description": "Two column group layout"
+  },
+
+  "Odoo Inherit View": {
+    "prefix": "oinherit",
+    "body": [
+      "<record id='${1:model}_form_view_inherit' model='ir.ui.view'>",
+      "    <field name='name'>${1:model}.form.inherit</field>",
+      "    <field name='model'>${2:module.model}</field>",
+      "    <field name='inherit_id' ref='${3:module.view_id}'/>",
+      "    <field name='arch' type='xml'>",
+      "        <xpath expr=\"//field[@name='${4:existing_field}']\"",
+      "               position='${5:after}'>",
+      "            ${0}",
+      "        </xpath>",
+      "    </field>",
+      "</record>"
+    ],
+    "description": "Inherit and extend existing view"
+  },
+
+  "Odoo Chatter": {
+    "prefix": "ochatter",
+    "body": [
+      "<div class='oe_chatter'>",
+      "    <field name='message_follower_ids'/>",
+      "    <field name='activity_ids'/>",
+      "    <field name='message_ids'/>",
+      "</div>"
+    ],
+    "description": "Chatter widget (mail.thread required)"
+  },
+
+  "Odoo Full Module XML": {
+    "prefix": "omodulexml",
+    "body": [
+      "<?xml version='1.0' encoding='utf-8'?>",
+      "<odoo>",
+      "    <data>",
+      "        ${0}",
+      "    </data>",
+      "</odoo>"
+    ],
+    "description": "Odoo XML file wrapper"
+  }
+}
