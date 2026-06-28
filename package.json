@@ -1,6 +1,6 @@
 {
-  "name": "odoo-snippets",
-  "displayName": "Odoo Snippets",
+  "name": "odoo-dev-snippets",
+  "displayName": "Odoo Dev Snippets",
   "description": "Snippets for Odoo Developers",
   "version": "0.0.1",
   "author": {
@@ -8,7 +8,7 @@
     "email": "as2732044@email.com",
     "url": "https://github.com/amankum02"
   },
-  "publisher": "Aman Kumar Singh",
+  "publisher": "amankum021",
   "engines": {
     "vscode": "^1.125.0"
   },
