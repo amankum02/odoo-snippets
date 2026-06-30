@@ -3,9 +3,9 @@
 > A powerful VS Code extension providing snippets for Odoo developers — Python models, XML views, fields, wizards, and much more!
 
 ![Version](https://img.shields.io/badge/version-0.0.1-blue)
-![VS Code](https://img.shields.io/badge/VS%20Code-1.60%2B-brightgreen)
+![VS Code](https://img.shields.io/badge/VS%20Code-1.20%2B-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Odoo](https://img.shields.io/badge/Odoo-19%20-purple)
+![Odoo](https://img.shields.io/badge/Odoo-19%20|%2018%20-purple)
 
 ---
 
@@ -155,8 +155,8 @@ Type `oinherit` and press **Tab**:
 
 ## Requirements
 
-- VS Code `1.60.0` or higher
-- Compatible with Odoo `14.0`, `15.0`, `16.0`, `17.0`, and `19.0`
+- VS Code `1.20.0` or higher
+- Compatible with Odoo `18.0`, and `19.0`
 
 ---
 

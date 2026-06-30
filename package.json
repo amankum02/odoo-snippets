@@ -2,7 +2,7 @@
   "name": "odoo-dev-snippets",
   "displayName": "Odoo Dev Snippets",
   "description": "Snippets for Odoo Developers",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": {
     "name": "Aman Kumar Singh",
     "email": "as2732044@email.com",
@@ -10,17 +10,26 @@
   },
   "publisher": "amankum021",
   "engines": {
-    "vscode": "^1.125.0"
+    "vscode": "^1.20.0"
   },
   "categories": [
     "Snippets"
   ],
   "keywords": [
     "odoo",
-    "python",
-    "xml",
-    "snippets",
-    "erp"
+    "odoo snippets",
+    "odoo developer",
+    "odoo python",
+    "odoo xml",
+    "python snippets",
+    "xml snippets",
+    "odoo model",
+    "odoo views",
+    "odoo form view",
+    "odoo tree view",
+    "odoo kanban",
+    "erp",
+    "odoo 19"
   ],
   "repository": {
     "type": "git",
