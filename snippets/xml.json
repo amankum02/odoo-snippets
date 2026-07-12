@@ -22,7 +22,7 @@
   },
 
   "Odoo List View": {
-    "prefix": "otree",
+    "prefix": "olist",
     "body": [
       "<record id='${1:model}_tree_view' model='ir.ui.view'>",
       "    <field name='name'>${1:model}.tree</field>",
@@ -213,5 +213,346 @@
       "</odoo>"
     ],
     "description": "Odoo XML file wrapper"
+  },
+
+  "Odoo Server Action": {
+    "prefix": "oserveraction",
+    "body": [
+      "<record id='action_server_${1:name}' model='ir.actions.server'>",
+      "    <field name='name'>${2:Action Name}</field>",
+      "    <field name='model_id' ref='model_${3:module_model}'/> ",
+      "    <field name='binding_model_id' ref='model_${3:module_model}'/>",
+      "    <field name='state'>code</field>",
+      "    <field name='code'>",
+      "        for record in records:",
+      "            ${0}",
+      "    </field>",
+      "</record>"
+    ],
+    "description": "Odoo Server Action (ir.actions.server)"
+  },
+
+  "Odoo Server Action — URL Redirect": {
+    "prefix": "oserveractionurl",
+    "body": [
+      "<record id='action_server_${1:name}' model='ir.actions.server'>",
+      "    <field name='name'>${2:Action Name}</field>",
+      "    <field name='model_id' ref='model_${3:module_model}'/>",
+      "    <field name='state'>url</field>",
+      "    <field name='url'>${4:https://example.com}</field>",
+      "    <field name='target'>new</field>",
+      "</record>"
+    ],
+    "description": "Odoo Server Action — URL Redirect"
+  },
+
+  "Odoo Server Action — Create Record": {
+    "prefix": "oserveractioncreate",
+    "body": [
+      "<record id='action_server_${1:name}' model='ir.actions.server'>",
+      "    <field name='name'>${2:Action Name}</field>",
+      "    <field name='model_id' ref='model_${3:module_model}'/>",
+      "    <field name='state'>object_create</field>",
+      "    <field name='crud_model_id' ref='model_${4:target_model}'/>",
+      "    <field name='link_field_id' ref='field_${5:link_field}'/>",
+      "</record>"
+    ],
+    "description": "Odoo Server Action — Create Record"
+  },
+
+  "Odoo Email Template": {
+    "prefix": "oemailtemplate",
+    "body": [
+      "<record id='email_template_${1:name}' model='mail.template'>",
+      "    <field name='name'>${2:Template Name}</field>",
+      "    <field name='model_id' ref='model_${3:module_model}'/>",
+      "    <field name='subject'>${4:Email Subject}</field>",
+      "    <field name='email_from'>${5:${object.company_id.email}}</field>",
+      "    <field name='email_to'>${6:${object.partner_id.email}}</field>",
+      "    <field name='body_html' type='html'>",
+      "        <div>",
+      "            <p>Dear <t t-out='object.partner_id.name'/>,</p>",
+      "            <p>${7:Email body goes here.}</p>",
+      "            <p>Regards,<br/>",
+      "            <t t-out='object.company_id.name'/></p>",
+      "        </div>",
+      "    </field>",
+      "    <field name='auto_delete' eval='True'/>",
+      "</record>"
+    ],
+    "description": "Odoo Email Template (mail.template)"
+  },
+
+  "Odoo Email Template — With Attachment": {
+    "prefix": "oemailattachment",
+    "body": [
+      "<record id='email_template_${1:name}' model='mail.template'>",
+      "    <field name='name'>${2:Template Name}</field>",
+      "    <field name='model_id' ref='model_${3:module_model}'/>",
+      "    <field name='subject'>${4:Email Subject}</field>",
+      "    <field name='email_from'>${5:${object.company_id.email}}</field>",
+      "    <field name='email_to'>${6:${object.partner_id.email}}</field>",
+      "    <field name='report_template' ref='${7:module.report_id}'/>",
+      "    <field name='report_name'>${8:report_filename}</field>",
+      "    <field name='body_html' type='html'>",
+      "        <div>",
+      "            <p>Dear <t t-out='object.partner_id.name'/>,</p>",
+      "            <p>${9:Email body goes here.}</p>",
+      "            <p>Regards,<br/>",
+      "            <t t-out='object.company_id.name'/></p>",
+      "        </div>",
+      "    </field>",
+      "    <field name='auto_delete' eval='True'/>",
+      "</record>"
+    ],
+    "description": "Odoo Email Template with PDF Attachment"
+  },
+
+  "Odoo PDF Report Template": {
+    "prefix": "oreport",
+    "body": [
+      "<record id='report_${1:name}' model='ir.actions.report'>",
+      "    <field name='name'>${2:Report Name}</field>",
+      "    <field name='model'>${3:module.model}</field>",
+      "    <field name='report_type'>qweb-pdf</field>",
+      "    <field name='report_name'>${4:module.report_template_name}</field>",
+      "    <field name='report_file'>${4:module.report_template_name}</field>",
+      "    <field name='binding_model_id' ref='model_${5:module_model}'/>",
+      "    <field name='binding_type'>report</field>",
+      "</record>",
+      "",
+      "<template id='report_template_${1:name}'>",
+      "    <t t-call='web.html_container'>",
+      "        <t t-foreach='docs' t-as='doc'>",
+      "            <t t-call='web.external_layout'>",
+      "                <div class='page'>",
+      "                    <h2><t t-out='doc.name'/></h2>",
+      "                    ${0}",
+      "                </div>",
+      "            </t>",
+      "        </t>",
+      "    </t>",
+      "</template>"
+    ],
+    "description": "Odoo PDF Report (QWeb)"
+  },
+
+  "Odoo Cron Job XML": {
+    "prefix": "ocronxml",
+    "body": [
+      "<record id='ir_cron_${1:name}' model='ir.cron'>",
+      "    <field name='name'>${2:Cron Job Name}</field>",
+      "    <field name='model_id' ref='model_${3:module_model}'/>",
+      "    <field name='state'>code</field>",
+      "    <field name='code'>model._cron_${4:method_name}()</field>",
+      "    <field name='interval_number'>1</field>",
+      "    <field name='interval_type'>days</field>",
+      "    <field name='numbercall'>-1</field>",
+      "    <field name='active' eval='True'/>",
+      "</record>"
+    ],
+    "description": "Odoo Cron Job (ir.cron)"
+  },
+
+  "Odoo Sequence XML": {
+    "prefix": "osequencexml",
+    "body": [
+      "<record id='sequence_${1:name}' model='ir.sequence'>",
+      "    <field name='name'>${2:Sequence Name}</field>",
+      "    <field name='code'>${3:module.model}</field>",
+      "    <field name='prefix'>${4:PREFIX/}</field>",
+      "    <field name='padding'>5</field>",
+      "    <field name='number_next'>1</field>",
+      "    <field name='number_increment'>1</field>",
+      "</record>"
+    ],
+    "description": "Odoo Sequence (ir.sequence)"
+  },
+
+  "Odoo Pivot View": {
+    "prefix": "opivot",
+    "body": [
+      "<record id='${1:model}_pivot_view' model='ir.ui.view'>",
+      "    <field name='name'>${1:model}.pivot</field>",
+      "    <field name='model'>${2:module.model}</field>",
+      "    <field name='arch' type='xml'>",
+      "        <pivot string='${3:Title}'>",
+      "            <field name='${4:row_field}' type='row'/>",
+      "            <field name='${5:col_field}' type='col'/>",
+      "            <field name='${6:measure_field}' type='measure'/>",
+      "        </pivot>",
+      "    </field>",
+      "</record>"
+    ],
+    "description": "Odoo Pivot View"
+  },
+
+  "Odoo Graph View": {
+    "prefix": "ograph",
+    "body": [
+      "<record id='${1:model}_graph_view' model='ir.ui.view'>",
+      "    <field name='name'>${1:model}.graph</field>",
+      "    <field name='model'>${2:module.model}</field>",
+      "    <field name='arch' type='xml'>",
+      "        <graph string='${3:Title}' type='${4|bar,line,pie|}'>",
+      "            <field name='${5:group_field}' type='row'/>",
+      "            <field name='${6:measure_field}' type='measure'/>",
+      "        </graph>",
+      "    </field>",
+      "</record>"
+    ],
+    "description": "Odoo Graph View (bar/line/pie)"
+  },
+
+  "Odoo Activity View": {
+    "prefix": "oactivityview",
+    "body": [
+      "<record id='${1:model}_activity_view' model='ir.ui.view'>",
+      "    <field name='name'>${1:model}.activity</field>",
+      "    <field name='model'>${2:module.model}</field>",
+      "    <field name='arch' type='xml'>",
+      "        <activity string='${3:Title}'>",
+      "            <field name='${4:field_name}'/>",
+      "            <templates>",
+      "                <div t-name='activity-box'>",
+      "                    <div>",
+      "                        <field name='${4:field_name}' display='full'/>",
+      "                    </div>",
+      "                </div>",
+      "            </templates>",
+      "        </activity>",
+      "    </field>",
+      "</record>"
+    ],
+    "description": "Odoo Activity View"
+  },
+
+  "Odoo Domain Filter Button": {
+    "prefix": "odomainfilter",
+    "body": [
+      "<filter string='${1:Filter Label}'",
+      "        name='${2:filter_name}'",
+      "        domain=\"[('${3:field}', '${4:=}', ${5:value})]\"/>"
+    ],
+    "description": "Search view domain filter button"
+  },
+
+  "Odoo Statusbar Widget": {
+    "prefix": "ostatusbar",
+    "body": [
+      "<field name='${1:state}'",
+      "       widget='statusbar'",
+      "       statusbar_visible='${2:draft,confirmed,done}'/>"
+    ],
+    "description": "Statusbar widget for state field"
+  },
+
+  "Odoo Monetary Field XML": {
+    "prefix": "omonetary",
+    "body": [
+      "<field name='${1:amount_field}' widget='monetary'/>",
+      "<field name='currency_id' invisible='1'/>"
+    ],
+    "description": "Monetary field with currency"
+  },
+
+  "Odoo Progress Bar Widget": {
+    "prefix": "oprogress",
+    "body": [
+      "<field name='${1:progress_field}'",
+      "       widget='progressbar'",
+      "       options=\"{'editable': False, 'max_value': ${2:100}}\"/>"
+    ],
+    "description": "Progress bar widget"
+  },
+
+  "Odoo Many2many Tags Widget": {
+    "prefix": "om2mtags",
+    "body": [
+      "<field name='${1:field_ids}' widget='many2many_tags'/>"
+    ],
+    "description": "Many2many tags widget"
+  },
+
+  "Odoo Priority Widget": {
+    "prefix": "opriority",
+    "body": [
+      "<field name='priority' widget='priority'/>"
+    ],
+    "description": "Priority widget (stars)"
+  },
+
+  "Odoo Color Picker Widget": {
+    "prefix": "ocolorpicker",
+    "body": [
+      "<field name='color' widget='color_picker'/>"
+    ],
+    "description": "Color picker widget"
+  },
+
+  "Odoo Map View": {
+    "prefix": "omapview",
+    "body": [
+      "<record id='${1:model}_map_view' model='ir.ui.view'>",
+      "    <field name='name'>${1:model}.map</field>",
+      "    <field name='model'>${2:module.model}</field>",
+      "    <field name='arch' type='xml'>",
+      "        <map string='${3:Title}'",
+      "             default_zoom='10'",
+      "             routing='false'>",
+      "            <field name='${4:partner_id}'/>",
+      "        </map>",
+      "    </field>",
+      "</record>"
+    ],
+    "description": "Odoo Map View"
+  },
+
+  "Odoo Cohort View": {
+    "prefix": "ocohort",
+    "body": [
+      "<record id='${1:model}_cohort_view' model='ir.ui.view'>",
+      "    <field name='name'>${1:model}.cohort</field>",
+      "    <field name='model'>${2:module.model}</field>",
+      "    <field name='arch' type='xml'>",
+      "        <cohort string='${3:Title}'",
+      "                date_start='${4:create_date}'",
+      "                date_stop='${5:date_end}'",
+      "                measure='${6:__count__}'",
+      "                interval='week'/>",
+      "    </field>",
+      "</record>"
+    ],
+    "description": "Odoo Cohort View"
+  },
+
+  "Odoo Security Group": {
+    "prefix": "ogroup",
+    "body": [
+      "<record id='group_${1:name}' model='res.groups'>",
+      "    <field name='name'>${2:Group Name}</field>",
+      "    <field name='category_id' ref='base.module_category_${3:category}'/>",
+      "    <field name='implied_ids' eval='[(4, ref(\"base.group_user\"))]'/>",
+      "</record>"
+    ],
+    "description": "Odoo Security Group (res.groups)"
+  },
+
+  "Odoo Record Rule": {
+    "prefix": "oresrule",
+    "body": [
+      "<record id='rule_${1:name}' model='ir.rule'>",
+      "    <field name='name'>${2:Rule Name}</field>",
+      "    <field name='model_id' ref='model_${3:module_model}'/>",
+      "    <field name='domain_force\">[('${4:field}', '=', ${5:value})]</field>",
+      "    <field name='groups' eval='[(4, ref(\"${6:module.group_name}\"))]'/>",
+      "    <field name='perm_read' eval='True'/>",
+      "    <field name='perm_write' eval='True'/>",
+      "    <field name='perm_create' eval='True'/>",
+      "    <field name='perm_unlink' eval='False'/>",
+      "</record>"
+    ],
+    "description": "Odoo Record Rule (ir.rule)"
   }
+
 }

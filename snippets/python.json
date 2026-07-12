@@ -118,5 +118,195 @@
       "        ${0}"
     ],
     "description": "Odoo TransientModel wizard"
+  },
+
+  "Odoo Send Email from Python": {
+    "prefix": "oendemail",
+    "body": [
+      "template = self.env.ref('${1:module.email_template_id}')",
+      "template.send_mail(self.id, force_send=True)"
+    ],
+    "description": "Send email using template from Python"
+  },
+
+  "Odoo Class Inherit": {
+    "prefix": "oinherit",
+    "body": [
+      "from odoo import models, fields, api",
+      "",
+      "class ${1:ModelName}(models.Model):",
+      "    _inherit = '${2:existing.model}'",
+      "",
+      "    ${3:new_field} = fields.${4:Char}(string='${5:Label}')",
+      "    ${0}"
+    ],
+    "description": "Inherit existing Odoo model (_inherit)"
+  },
+
+  "Odoo Cron Job Method": {
+    "prefix": "ocron",
+    "body": [
+      "def _cron_${1:method_name}(self):",
+      "    records = self.env['${2:model.name}'].search([",
+      "        ('${3:field}', '=', ${4:value}),",
+      "    ])",
+      "    for rec in records:",
+      "        ${0}"
+    ],
+    "description": "Cron job method"
+  },
+
+  "Odoo Constraint": {
+    "prefix": "oconstraint",
+    "body": [
+      "@api.constrains('${1:field_name}')",
+      "def _check_${1:field_name}(self):",
+      "    for rec in self:",
+      "        if ${2:condition}:",
+      "            raise ValidationError(_('${3:Error message}'))"
+    ],
+    "description": "@api.constrains decorator with ValidationError"
+  },
+
+  "Odoo Multi Company Field": {
+    "prefix": "omulticompany",
+    "body": [
+      "company_id = fields.Many2one(",
+      "    'res.company',",
+      "    string='Company',",
+      "    required=True,",
+      "    default=lambda self: self.env.company",
+      ")"
+    ],
+    "description": "Multi-company field (company_id)"
+  },
+
+  "Odoo Sequence Field": {
+    "prefix": "osequence",
+    "body": [
+      "sequence = fields.Integer(",
+      "    string='Sequence',",
+      "    default=10",
+      ")"
+    ],
+    "description": "Sequence integer field"
+  },
+
+  "Odoo Raw SQL Query": {
+    "prefix": "osql",
+    "body": [
+      "query = \"\"\"",
+      "    SELECT ${1:column}",
+      "    FROM ${2:table}",
+      "    WHERE ${3:condition}",
+      "\"\"\"",
+      "self.env.cr.execute(query, (${4:params},))",
+      "results = self.env.cr.fetchall()",
+      "${0}"
+    ],
+    "description": "Raw SQL query using self.env.cr"
+  },
+
+  "Odoo default_get Override": {
+    "prefix": "odefaultget",
+    "body": [
+      "@api.model",
+      "def default_get(self, fields_list):",
+      "    res = super().default_get(fields_list)",
+      "    res.update({",
+      "        '${1:field_name}': ${2:default_value},",
+      "    })",
+      "    return res"
+    ],
+    "description": "Override default_get method"
+  },
+
+  "Odoo create Override": {
+    "prefix": "ocreate",
+    "body": [
+      "@api.model_create_multi",
+      "def create(self, vals_list):",
+      "    for vals in vals_list:",
+      "        ${1:# modify vals if needed}",
+      "    records = super().create(vals_list)",
+      "    ${0}",
+      "    return records"
+    ],
+    "description": "Override create method"
+  },
+
+  "Odoo write Override": {
+    "prefix": "owrite",
+    "body": [
+      "def write(self, vals):",
+      "    ${1:# do something before write}",
+      "    res = super().write(vals)",
+      "    ${0}",
+      "    return res"
+    ],
+    "description": "Override write method"
+  },
+
+  "Odoo unlink Override": {
+    "prefix": "ounlink",
+    "body": [
+      "def unlink(self):",
+      "    for rec in self:",
+      "        if ${1:rec.state != 'draft'}:",
+      "            raise UserError(_('${2:You cannot delete this record!}'))",
+      "    return super().unlink()"
+    ],
+    "description": "Override unlink method with condition check"
+  },
+
+  "Odoo name_search Override": {
+    "prefix": "onamesearch",
+    "body": [
+      "@api.model",
+      "def name_search(self, name='', args=None, operator='ilike', limit=100):",
+      "    args = args or []",
+      "    if name:",
+      "        args = [('${1:name}', operator, name)] + args",
+      "    return self.search(args, limit=limit).name_get()"
+    ],
+    "description": "Override name_search for custom search"
+  },
+
+  "Odoo Logger": {
+    "prefix": "olog",
+    "body": [
+      "import logging",
+      "_logger = logging.getLogger(__name__)",
+      "",
+      "_logger.info('${1:message}')",
+      "_logger.warning('${2:warning message}')",
+      "_logger.error('${3:error message}')"
+    ],
+    "description": "Odoo logger setup and usage"
+  },
+
+  "Odoo Logger Info": {
+    "prefix": "ologinfo",
+    "body": [
+      "_logger.info('${1:message}: %s', ${2:variable})"
+    ],
+    "description": "Logger info message"
+  },
+
+  "Odoo Logger Warning": {
+    "prefix": "ologwarn",
+    "body": [
+      "_logger.warning('${1:message}: %s', ${2:variable})"
+    ],
+    "description": "Logger warning message"
+  },
+
+  "Odoo Logger Error": {
+    "prefix": "ologerror",
+    "body": [
+      "_logger.error('${1:message}: %s', ${2:variable})"
+    ],
+    "description": "Logger error message"
   }
+
 }

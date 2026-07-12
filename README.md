@@ -1,22 +1,27 @@
-# Odoo Snippets 🐍
+# Odoo Dev Snippets 🐍
 
-> A powerful VS Code extension providing snippets for Odoo developers — Python models, XML views, fields, wizards, and much more!
+> A powerful VS Code extension providing 50+ snippets for Odoo developers — Python models, XML views, fields, wizards, reports, email templates, server actions, and much more!
 
-![Version](https://img.shields.io/badge/version-0.0.1-blue)
+![Version](https://img.shields.io/badge/version-0.0.3-blue)
 ![VS Code](https://img.shields.io/badge/VS%20Code-1.20%2B-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Odoo](https://img.shields.io/badge/Odoo-19%20|%2018%20-purple)
+![Odoo](https://img.shields.io/badge/Odoo-%2018%20|%2019-purple)
 
 ---
 
 ## Features
 
-- ⚡ **Python Snippets** — Models, fields, computed methods, onchange, wizards
-- 🖼️ **XML Snippets** — Form, tree, kanban, and search views
-- 🔘 **Button & Action Snippets** — Header buttons, smart buttons, window actions
+- ⚡ **Python Snippets** — Models, fields, computed methods, onchange, wizards, overrides
+- 🖼️ **XML Snippets** — Form, tree, kanban, pivot, graph, activity, map, cohort views
+- 🔘 **Button & Action Snippets** — Header buttons, smart buttons, server actions, window actions
 - 🔗 **Relational Fields** — Many2one, One2many, Many2many
 - 📋 **View Inheritance** — XPath based view extension
 - 💬 **Chatter Support** — mail.thread integration ready
+- 📧 **Email Templates** — Basic and with PDF attachment
+- 📊 **Reports** — QWeb PDF report template
+- ⏰ **Cron Jobs** — Python method and XML record
+- 🔒 **Security** — Groups and record rules
+- 🪵 **Logger** — Info, warning, error logging
 
 ---
 
@@ -25,7 +30,7 @@
 ### From VS Code Marketplace
 1. Open VS Code
 2. Press `Ctrl+Shift+X` to open Extensions
-3. Search for **"Odoo Snippets"**
+3. Search for **"Odoo Dev Snippets"**
 4. Click **Install**
 
 ### From VSIX (Manual)
@@ -37,22 +42,121 @@
 
 ## Python Snippets
 
+### Model Snippets
+
 | Prefix | Description |
 |--------|-------------|
 | `omodel` | Odoo Model class (`models.Model`) |
+| `oinherit` | Inherit existing model (`_inherit`) |
+| `owizard` | TransientModel (Wizard) class |
+
+### Field Snippets
+
+| Prefix | Description |
+|--------|-------------|
 | `ocompute` | Computed field with `@api.depends` |
 | `oonchange` | Onchange method with decorator |
 | `om2o` | Many2one relational field |
 | `oo2m` | One2many relational field |
 | `om2m` | Many2many relational field |
+| `omulticompany` | Multi-company field (`company_id`) |
+| `osequence` | Sequence integer field |
+
+### Method Snippets
+
+| Prefix | Description |
+|--------|-------------|
 | `obtn` | Button action method |
+| `oconstraint` | `@api.constrains` with ValidationError |
+| `odefaultget` | Override `default_get` |
+| `ocreate` | Override `create` method |
+| `owrite` | Override `write` method |
+| `ounlink` | Override `unlink` with condition |
+| `onamesearch` | Override `name_search` |
+| `ocron` | Cron job method |
+
+### Utility Snippets
+
+| Prefix | Description |
+|--------|-------------|
 | `oerror` | Raise `UserError` exception |
 | `osearch` | `self.env[].search([])` query |
-| `owizard` | TransientModel (Wizard) class |
+| `osql` | Raw SQL query using `self.env.cr` |
+| `olog` | Logger setup (info, warning, error) |
+| `ologinfo` | Logger info message |
+| `ologwarn` | Logger warning message |
+| `ologerror` | Logger error message |
+| `oendemail` | Send email from Python using template |
 
-### Example — `omodel`
+---
 
-Type `omodel` and press **Tab**:
+## XML Snippets
+
+### View Snippets
+
+| Prefix | Description |
+|--------|-------------|
+| `oform` | Complete Form View record |
+| `otree` | Tree / List View record |
+| `okanban` | Kanban View record |
+| `osearchview` | Search View with filter and group by |
+| `opivot` | Pivot View |
+| `ograph` | Graph View (bar / line / pie) |
+| `oactivityview` | Activity View |
+| `omapview` | Map View |
+| `ocohort` | Cohort View |
+| `oinherit` | View inherit with XPath |
+
+### Action & Menu Snippets
+
+| Prefix | Description |
+|--------|-------------|
+| `oaction` | `ir.actions.act_window` record |
+| `omenu` | `menuitem` tag |
+| `oserveraction` | Server Action — Python code |
+| `oserveractionurl` | Server Action — URL redirect |
+| `oserveractioncreate` | Server Action — Create record |
+
+### Widget Snippets
+
+| Prefix | Description |
+|--------|-------------|
+| `obtnheader` | Header with button and statusbar |
+| `osmartbtn` | Smart Button (`oe_stat_button`) |
+| `ostatusbar` | Statusbar widget for state field |
+| `omonetary` | Monetary field with currency |
+| `oprogress` | Progress bar widget |
+| `om2mtags` | Many2many tags widget |
+| `opriority` | Priority widget (stars) |
+| `ocolorpicker` | Color picker widget |
+
+### Layout Snippets
+
+| Prefix | Description |
+|--------|-------------|
+| `onote` | Notebook with page tab |
+| `ogroup2` | Two-column group layout |
+| `ochatter` | Chatter widget (message, activity, follower) |
+| `omodulexml` | Base XML file wrapper (`<odoo><data>`) |
+| `odomainfilter` | Domain filter button in search view |
+
+### Other Snippets
+
+| Prefix | Description |
+|--------|-------------|
+| `oemailtemplate` | Email Template (mail.template) |
+| `oemailattachment` | Email Template with PDF Attachment |
+| `oreport` | QWeb PDF Report template |
+| `ocronxml` | Cron Job XML record |
+| `osequencexml` | Sequence XML record |
+| `ogroup` | Security Group (res.groups) |
+| `oresrule` | Record Rule (ir.rule) |
+
+---
+
+## Examples
+
+### `omodel` — Complete Model
 
 ```python
 from odoo import models, fields, api
@@ -65,9 +169,7 @@ class SaleOrder(models.Model):
     # cursor lands here
 ```
 
-### Example — `ocompute`
-
-Type `ocompute` and press **Tab**:
+### `ocompute` — Computed Field
 
 ```python
 total_amount = fields.Float(
@@ -81,29 +183,19 @@ def _compute_total_amount(self):
         rec.total_amount = # cursor lands here
 ```
 
----
+### `ocreate` — Create Override
 
-## XML Snippets
+```python
+@api.model_create_multi
+def create(self, vals_list):
+    for vals in vals_list:
+        # modify vals if needed
+    records = super().create(vals_list)
+    # cursor lands here
+    return records
+```
 
-| Prefix | Description |
-|--------|-------------|
-| `oform` | Complete Form View record |
-| `otree` | Tree / List View record |
-| `okanban` | Kanban View record |
-| `osearchview` | Search View with filter and group by |
-| `oaction` | `ir.actions.act_window` record |
-| `omenu` | `menuitem` tag |
-| `obtnheader` | Header with button and statusbar widget |
-| `osmartbtn` | Smart Button (`oe_stat_button`) |
-| `onote` | Notebook with page tab |
-| `ogroup2` | Two-column group layout |
-| `oinherit` | View inherit with XPath |
-| `ochatter` | Chatter widget (message, activity, follower) |
-| `omodulexml` | Base XML file wrapper (`<odoo><data>`) |
-
-### Example — `oform`
-
-Type `oform` and press **Tab**:
+### `oform` — Form View
 
 ```xml
 <record id="sale_order_form_view" model="ir.ui.view">
@@ -122,20 +214,36 @@ Type `oform` and press **Tab**:
 </record>
 ```
 
-### Example — `oinherit`
-
-Type `oinherit` and press **Tab**:
+### `oemailtemplate` — Email Template
 
 ```xml
-<record id="sale_order_form_view_inherit" model="ir.ui.view">
-    <field name="name">sale.order.form.inherit</field>
-    <field name="model">sale.order</field>
-    <field name="inherit_id" ref="sale.view_order_form"/>
-    <field name="arch" type="xml">
-        <xpath expr="//field[@name='partner_id']" position="after">
-            <!-- cursor lands here -->
-        </xpath>
+<record id="email_template_sale" model="mail.template">
+    <field name="name">Sale Order Template</field>
+    <field name="model_id" ref="model_sale_order"/>
+    <field name="subject">Sale Order Confirmation</field>
+    <field name="email_from">${object.company_id.email}</field>
+    <field name="email_to">${object.partner_id.email}</field>
+    <field name="body_html" type="html">
+        <div>
+            <p>Dear <t t-out="object.partner_id.name"/>,</p>
+            <p>Your order has been confirmed.</p>
+        </div>
     </field>
+</record>
+```
+
+### `ocronxml` — Cron Job
+
+```xml
+<record id="ir_cron_auto_confirm" model="ir.cron">
+    <field name="name">Auto Confirm Orders</field>
+    <field name="model_id" ref="model_sale_order"/>
+    <field name="state">code</field>
+    <field name="code">model._cron_auto_confirm()</field>
+    <field name="interval_number">1</field>
+    <field name="interval_type">days</field>
+    <field name="numbercall">-1</field>
+    <field name="active" eval="True"/>
 </record>
 ```
 
@@ -149,14 +257,14 @@ Type `oinherit` and press **Tab**:
 4. Use **Tab** again to jump between placeholders
 5. Fill in your values and you're done!
 
-> 💡 **Pro Tip:** Type `o` to see all available Odoo snippets in the IntelliSense dropdown at once!
+> 💡 **Pro Tip:** Just type `o` to see ALL Odoo snippets in the IntelliSense dropdown at once!
 
 ---
 
 ## Requirements
 
 - VS Code `1.20.0` or higher
-- Compatible with Odoo `18.0`, and `19.0`
+- Compatible with all Odoo versions: `14.0`, `15.0`, `16.0`, `17.0`, `18.0`, `19.0`
 
 ---
 
@@ -208,6 +316,25 @@ When submitting a snippet, please include:
 ---
 
 ## Changelog
+
+### 0.0.3 — Latest
+- Added Python overrides: `create`, `write`, `unlink`, `default_get`, `name_search`
+- Added `@api.constrains` snippet
+- Added Logger snippets (info, warning, error)
+- Added Raw SQL query snippet
+- Added Multi-company and Sequence field snippets
+- Added Server Action snippets (code, url, create)
+- Added Email Template snippets (basic + with attachment)
+- Added Pivot, Graph, Activity, Map, Cohort view snippets
+- Added Widget snippets: monetary, progress, priority, color picker, many2many tags
+- Added Cron Job XML snippet
+- Added Sequence XML snippet
+- Added Security Group and Record Rule snippets
+- Added QWeb PDF Report snippet
+
+### 0.0.2 — Latest
+- Update vs code version compatiblity
+- Added keyword
 
 ### 0.0.1 — Initial Release
 - Python model, field, compute, and onchange snippets

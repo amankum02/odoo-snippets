@@ -2,7 +2,7 @@
   "name": "odoo-dev-snippets",
   "displayName": "Odoo Dev Snippets",
   "description": "Snippets for Odoo Developers",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": {
     "name": "Aman Kumar Singh",
     "email": "as2732044@email.com",
@@ -39,7 +39,7 @@
     "snippets": [
       {
         "language": "python",
-        "path": "./snippets/snippets.code-snippets"
+        "path": "./snippets/python.json"
       },
       {
         "language": "xml",
